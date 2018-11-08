@@ -1,4 +1,4 @@
-FROM arkhaix/vs2017-ccp:latest
+FROM microsoft/windowsservercore:1803
 SHELL ["powershell", "-Command"]
 
 # Install Stackless
