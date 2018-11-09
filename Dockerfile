@@ -1,9 +1,9 @@
-FROM microsoft/windowsservercore:1803
+FROM arkhaix/ccp-buildtools
 SHELL ["powershell", "-Command"]
 
 # Install Stackless
 RUN wget http://www.stackless.com/binaries/python-2.7.15150.amd64-stackless.msi -Outfile C:\stackless.msi
-RUN msiexec /qn /passive /norestart /a C:\stackless.msi targetdir=C:\stackless
+RUN Start-Process -filepath C:\stackless.msi -ArgumentList "/qn", "targetdir=C:\stackless" -PassThru | Wait-Process
 
 # Install Chocolatey
 RUN Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
